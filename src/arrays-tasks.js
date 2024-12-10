@@ -489,8 +489,10 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map((i) =>
+    i.toString(16).padStart(6, '0').padStart(7, '#').toUpperCase()
+  );
 }
 
 /**
@@ -538,8 +540,23 @@ function findCommonElements(arr1, arr2) {
  *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => 2
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
-function findLongestIncreasingSubsequence(/* nums */) {
-  throw new Error('Not implemented');
+function findLongestIncreasingSubsequence(nums) {
+  const r = nums.reduce(
+    (a, c) => {
+      const obj = a;
+      if (obj.prev < c) {
+        obj.prev = c;
+        obj.cnt += 1;
+      } else {
+        obj.prev = c;
+        obj.cnt = 1;
+      }
+      obj.max = Math.max(a.max, a.cnt);
+      return a;
+    },
+    { prev: Number.MAX_VALUE, max: Number.MIN_VALUE, cnt: 1 }
+  );
+  return r.max;
 }
 
 /**
