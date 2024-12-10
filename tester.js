@@ -1,11 +1,11 @@
-function insertItem(arr, item, index) {
-  const h = arr.slice(index);
-  arr.splice(index, arr.length - index);
-  arr.push(item);
-  arr.push(...h);
+function getIdentityMatrix(n) {
+  return Array.from(new Array(n).keys()).reduce((a, c) => {
+    const arr = new Array(n);
+    arr.fill(0);
+    arr[c - 1] = 1;
+    a.push(arr)
+    return a
+  }, []);
 }
 
-arr = [ 1, 'b', 'c']
-
-insertItem(arr, 'x', 0)
-console.log(arr);
+console.log(getIdentityMatrix(2));
