@@ -14,7 +14,6 @@ function findLongestIncreasingSubsequence(nums) {
     },
     { prev: Number.MAX_VALUE, max: Number.MIN_VALUE, cnt: 1 }
   );
-
   return r.max;
 }
 
